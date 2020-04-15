@@ -34,10 +34,10 @@ export class ModalComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.modalForm = this.formBuilder.group({
-      first: ['', Validators.required],
-      last: ['', Validators.required],
-      age: ['', Validators.required],
-      email: ['', Validators.required],
+      first: [this.isEdit ? this.user.name.first : '', Validators.required],
+      last: [this.isEdit ? this.user.name.last : '', Validators.required],
+      age: [this.isEdit ? this.user.age : '', Validators.required],
+      email: [this.isEdit ? this.user.email : '', Validators.required],
     });
   }
 

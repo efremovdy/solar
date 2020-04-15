@@ -1,4 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { UsersService } from '../../services/users.service';
 
@@ -8,8 +9,13 @@ import { UsersService } from '../../services/users.service';
 })
 export class UsersComponent implements OnInit, OnDestroy {
   constructor(
-    public usersService: UsersService
+    public usersService: UsersService,
+    private router: Router
   ) { }
+
+  public edit(guid: string) {
+    this.router.navigate(['/user/', guid]);
+  }
 
   ngOnInit() { }
   ngOnDestroy() { }

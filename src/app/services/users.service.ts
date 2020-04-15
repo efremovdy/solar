@@ -20,10 +20,11 @@ export class UsersService {
   }
 
   updateUser(user: User) {
-    this.users.forEach(u => {
+    this.users = this.users.map(u => {
       if (u.guid === user.guid) {
         u = user;
       }
+      return u;
     });
     this.users$.next(this.users);
   }

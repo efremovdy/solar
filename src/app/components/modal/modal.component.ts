@@ -18,14 +18,15 @@ export class ModalComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private usersService: UsersService
   ) {
-    if (this.route.snapshot.paramMap.get('id') !== 'null') {
+    const guid = this.route.snapshot.paramMap.get('id');
+    if (guid !== 'null') {
       this.isEdit = true;
     }
-    this.getUser();
+    this.getUser(guid);
   }
 
-  private getUser() {
-    this.user = this.usersService.getUserByGuid(this.route.snapshot.paramMap.get('id'));
+  private getUser(guid: string) {
+    this.user = this.usersService.getUserByGuid(guid);
     if (!this.user && this.isEdit) {
       this.router.navigate(['/']);
     }

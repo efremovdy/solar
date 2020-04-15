@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "solar"
+    }
+  },
+  "defaultProject": "solar",
+  "cli": {
+    "analytics": false
+  }
 }

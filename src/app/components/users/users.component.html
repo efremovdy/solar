@@ -1,6 +1,36 @@
-<h2>Users</h2>
-<div class="list-group">
-  <a *ngFor="let user of users" class="list-group-item list-group-item-action">
-    {{ user.age }}
-  </a>
+<div class="header">
+  <h2>Users</h2>
+  <button class="btn btn-outline-primary" [routerLink]="'/user/null'">Create user</button>
 </div>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th class="wide-screen">Icon</th>
+      <th>First name</th>
+      <th>Last name</th>
+      <th class="wide-screen">Age</th>
+      <th class="wide-screen">Additional Info</th>
+      <th class="text-right">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of (usersService.users$ | async); let i = index">
+      <th>{{ i + 1 }}</th>
+      <td class="wide-screen"><img src="assets/user.png"></td>
+      <td>{{ user.name.first }}</td>
+      <td>{{ user.name.last }}</td>
+      <td class="wide-screen">{{ user.age }}</td>
+      <td class="wide-screen">{{ user.addInfo }}</td>
+      <td class="btn-box">
+        <button class="btn btn-primary">
+          <i class="fas fa-edit"></i>
+        </button>
+        <button class="btn btn-secondary" (click)="usersService.deleteUser(user.guid)">
+          <i class="fas fa-trash"></i>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

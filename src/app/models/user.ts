@@ -9,6 +9,10 @@ export class User {
   name: Name;
   email: string;
 
+  constructor(user: any) {
+    Object.assign(this, user);
+  }
+
   get addInfo() {
     return `${this.name.first[0]}.${this.name.last[0]} - ${this.email}`;
   }

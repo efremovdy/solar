@@ -1,0 +1,43 @@
+<div class="col-sm-6 offset-sm-3">
+  <h2>
+    <span *ngIf="isEdit">Edit user</span>
+    <span *ngIf="!isEdit">Create user</span>
+  </h2>
+  <form [formGroup]="modalForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="first">First name</label>
+      <input type="text" formControlName="first" class="form-control"
+        [ngClass]="{ 'is-invalid': submitted && f.first.errors }" />
+      <div *ngIf="submitted && f.first.errors" class="invalid-feedback">
+        <div *ngIf="f.first.errors.required">First name is required</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="last">Last name</label>
+      <input type="text" formControlName="last" class="form-control"
+        [ngClass]="{ 'is-invalid': submitted && f.last.errors }" />
+      <div *ngIf="submitted && f.last.errors" class="invalid-feedback">
+        <div *ngIf="f.last.errors.required">Last name is required</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="age">Age</label>
+      <input type="number" formControlName="age" class="form-control"
+        [ngClass]="{ 'is-invalid': submitted && f.age.errors }" />
+      <div *ngIf="submitted && f.age.errors" class="invalid-feedback">
+        <div *ngIf="f.age.errors.required">Age is required</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" formControlName="email" class="form-control"
+        [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+      <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+        <div *ngIf="f.email.errors.required">Email is required</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <button class="btn btn-primary">Save</button>
+    </div>
+  </form>
+</div>

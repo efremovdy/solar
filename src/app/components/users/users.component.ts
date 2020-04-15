@@ -1,32 +1,20 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Subscription } from 'rxjs';
 
 import { UsersService } from '../../services/users.service';
-import { User } from '../../models/user';
 
 @Component({
-  templateUrl: 'users.component.html'
+  templateUrl: 'users.component.html',
+  styleUrls: ['./users.component.less']
 })
 export class UsersComponent implements OnInit, OnDestroy {
-  private subscription: Subscription;
-  public users: User[] = [];
-
   constructor(
-    private usersService: UsersService
+    public usersService: UsersService
   ) { }
 
-  ngOnInit() {
-    this.getUsers();
-  }
+  ngOnInit() { }
+  ngOnDestroy() { }
 
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
-  }
-
-  private getUsers() {
-    this.subscription = this.usersService.getUsers()
-      .subscribe((users: User[]) => {
-        this.users = users;
-      });
-  }
+  /* private getUsers() {
+    this.subscription = this.usersService.getUsers().subscribe();
+  } */
 }

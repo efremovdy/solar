@@ -5,7 +5,6 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { UsersService } from '../../services/users.service';
 import { User } from '../../models/user';
 
-
 @Component({ templateUrl: 'modal.component.html' })
 export class ModalComponent implements OnInit, OnDestroy {
   modalForm: FormGroup;
